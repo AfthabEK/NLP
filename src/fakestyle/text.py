@@ -16,6 +16,7 @@ _TITLE_MEDIA_TAG = re.compile(r"\s*[\[(]\s*(?:video|videos|images?|photos?|watch
 # --- body patterns --------------------------------------------------------------------------------
 _AGENCY_TAG = re.compile(r"\s*\((?:Reuters|AP|AFP|Bloomberg)\)\s*", re.I)
 _LEADING_DASH = re.compile(r"^\s*([A-Z][A-Za-z .,/'-]{0,60}?)\s*[-–—]\s+")    # "WASHINGTON - " left after tag removal
+_ORPHAN_DASH = re.compile(r"^\s*[-–—]\s+")
 _IMAGE_CREDIT = re.compile(
     r"\b(?:Featured image|Header image|Image via|Image credit|Photo credit|Photo via|Screenshot via)\b[^.\n]*\.?", re.I)
 _GETTY = re.compile(r"\b(?:AFP/Getty Images|Getty Images)\b")
@@ -50,6 +51,7 @@ def strip_text(text: str) -> str:
     text = _AGENCY_TAG.sub(" ", text)
     if had_agency:                                   # "WASHINGTON (Reuters) - Body" -> "Body"
         text = _LEADING_DASH.sub("", text, count=1)
+        text = _ORPHAN_DASH.sub("", text, count=1)    # "(Reuters) - Body" with no city -> "Body"
     for pattern in (_TWEET_EMBED, _IMAGE_CREDIT, _GETTY, _READ_MORE, _VIA_LINE, _URL, _HANDLE_VIA):
         text = pattern.sub(" ", text)
     text = _SPACES.sub(" ", text)

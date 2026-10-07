@@ -28,6 +28,10 @@ exactly the same. These rewrites are used to test whether fake-news classifiers 
 5. **Do not remove or soften claims either.** Keep strong claims strong in content, even when the wording calms down.
 6. Do not add agency names, datelines, bylines, publication names, image credits, URLs, hashtags or `[VIDEO]`-style tags.
 7. Keep the length within about ±15% of the original body. Write in English. Write the title and the body.
+8. Drop leftover web boilerplate that is not part of the story: bylines ("By Jane Doe"), share counters
+   ("10 Shares"), "Email", category lists, timestamps, a leading "- ", and a title repeated at the start of the body.
+   Drop it in **every** condition, including `same`.
+9. Typos and missing apostrophes in the input (e.g. "Brazil s") may be corrected; they are scraping artefacts.
 
 ### Target styles
 

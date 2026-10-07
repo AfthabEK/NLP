@@ -46,3 +46,7 @@ def test_truncate_short_text_unchanged():
 def test_ordinary_sentences_survive():
     text = "Via the new program, a photo by the agency showed the Getty museum. Read the report."
     assert strip_text(text) == text
+
+
+def test_agency_tag_without_city():
+    assert strip_text("(Reuters) - U.S. President-elect Donald Trump said.") == "U.S. President-elect Donald Trump said."
