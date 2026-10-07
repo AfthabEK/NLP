@@ -14,7 +14,7 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 | 03a | [`03a_attack_sample.ipynb`](notebooks/03a_attack_sample.ipynb): sample 600 test articles, truncate, strip source markers, export for rewriting | CPU | done |
 | 03b | [`03b_style_attack.ipynb`](notebooks/03b_style_attack.ipynb): NLI content check, accuracy by condition, effect decomposition, flip rates, dose–response | GPU (T4) | done |
 | 04a | [`04a_augmentation_sample.ipynb`](notebooks/04a_augmentation_sample.ipynb): sample 500 training articles and export them for augmentation rewrites | CPU | done |
-| 04b | [`04b_defenses.ipynb`](notebooks/04b_defenses.ipynb): retrain both models with source-marker normalisation and/or style-flip augmentation; clean vs. attack accuracy | GPU (T4) | ready (needs `rewrites_aug/`) |
+| 04b | [`04b_defenses.ipynb`](notebooks/04b_defenses.ipynb): retrain both models with source-marker normalisation and/or style-flip augmentation; clean vs. attack accuracy | GPU (T4) | ready |
 | 05 | Final analysis, figures, demo | CPU | planned |
 
 ## Running on Google Colab
@@ -55,5 +55,6 @@ Source: Zenodo, DOI [10.5281/zenodo.4561253](https://doi.org/10.5281/zenodo.4561
 | `tests/` | Unit tests for `src/` (`python -m pytest tests`) |
 | `scripts/` | `validate_rewrites.py`: checks a rewrite file against its input chunk |
 | `prompts/` | The fixed LLM rewrite prompt |
-| `rewrites/` | Generated style rewrites (see its README) |
+| `rewrites/` | Style rewrites of 600 test articles for the attack (see its README) |
+| `rewrites_aug/` | Style-flipped rewrites of 500 training articles for the augmentation defense |
 | `docs/` | Project plan |
