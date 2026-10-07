@@ -10,8 +10,9 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 | # | Notebook | Runtime | Status |
 |---|---|---|---|
 | 01 | [`01_data_and_baseline.ipynb`](notebooks/01_data_and_baseline.ipynb): WELFake loading, cleaning, EDA, style cues, splits, TF‑IDF + LR baseline | CPU | done |
-| 02 | [`02_distilbert.ipynb`](notebooks/02_distilbert.ipynb): DistilBERT fine-tuning (3 seeds), comparison with TF‑IDF, McNemar test | GPU (T4) | ready |
-| 03 | Style attack: rewrites, NLI filter, accuracy drops, dose–response | GPU (NLI filter) | planned |
+| 02 | [`02_distilbert.ipynb`](notebooks/02_distilbert.ipynb): DistilBERT fine-tuning (3 seeds), comparison with TF‑IDF, McNemar test | GPU (T4) | done |
+| 03a | [`03a_attack_sample.ipynb`](notebooks/03a_attack_sample.ipynb): sample 600 test articles, truncate, strip source markers, export for rewriting | CPU | ready |
+| 03b | Style attack: NLI filter, accuracy drops, style effect, dose–response | GPU | planned |
 | 04 | Defenses: style normalisation vs. rewrite augmentation | GPU | planned |
 | 05 | Final analysis, figures, demo | CPU | planned |
 
@@ -43,3 +44,14 @@ Source: Zenodo, DOI [10.5281/zenodo.4561253](https://doi.org/10.5281/zenodo.4561
 > **Label caveat:** the WELFake documentation says `0 = fake, 1 = real`, but the published data appears to use
 > the opposite convention (Reuters wire stories are labelled `0`). Notebook 01 infers the mapping from the data
 > and stores an unambiguous column `fake` (1 = fake, 0 = real), which all later notebooks use.
+
+## Repository layout
+
+| Path | Contents |
+|---|---|
+| `notebooks/` | Colab notebooks, run in order |
+| `src/fakestyle/` | Shared code the notebooks download from GitHub (text truncation, source-marker stripping) |
+| `tests/` | Unit tests for `src/` (`python -m pytest tests`) |
+| `prompts/` | The fixed LLM rewrite prompt |
+| `rewrites/` | Generated style rewrites (see its README) |
+| `docs/` | Project plan |
