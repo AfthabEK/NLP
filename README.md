@@ -13,8 +13,8 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 | 02 | [`02_distilbert.ipynb`](notebooks/02_distilbert.ipynb): DistilBERT fine-tuning (3 seeds), comparison with TF‑IDF, McNemar test | GPU (T4) | done |
 | 03a | [`03a_attack_sample.ipynb`](notebooks/03a_attack_sample.ipynb): sample 600 test articles, truncate, strip source markers, export for rewriting | CPU | done |
 | 03b | [`03b_style_attack.ipynb`](notebooks/03b_style_attack.ipynb): NLI content check, accuracy by condition, effect decomposition, flip rates, dose–response | GPU (T4) | done |
-| 04a | [`04a_augmentation_sample.ipynb`](notebooks/04a_augmentation_sample.ipynb): sample 500 training articles and export them for augmentation rewrites | CPU | ready |
-| 04b | Defenses: style normalisation vs. rewrite augmentation, retraining both models | GPU | planned |
+| 04a | [`04a_augmentation_sample.ipynb`](notebooks/04a_augmentation_sample.ipynb): sample 500 training articles and export them for augmentation rewrites | CPU | done |
+| 04b | [`04b_defenses.ipynb`](notebooks/04b_defenses.ipynb): retrain both models with source-marker normalisation and/or style-flip augmentation; clean vs. attack accuracy | GPU (T4) | ready (needs `rewrites_aug/`) |
 | 05 | Final analysis, figures, demo | CPU | planned |
 
 ## Running on Google Colab
