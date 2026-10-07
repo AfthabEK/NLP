@@ -9,8 +9,8 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 
 | # | Notebook | Runtime | Status |
 |---|---|---|---|
-| 01 | [`01_data_and_baseline.ipynb`](notebooks/01_data_and_baseline.ipynb): WELFake loading, cleaning, EDA, style cues, splits, TF‑IDF + LR baseline | CPU | ready |
-| 02 | DistilBERT fine-tuning | GPU (T4) | planned |
+| 01 | [`01_data_and_baseline.ipynb`](notebooks/01_data_and_baseline.ipynb): WELFake loading, cleaning, EDA, style cues, splits, TF‑IDF + LR baseline | CPU | done |
+| 02 | [`02_distilbert.ipynb`](notebooks/02_distilbert.ipynb): DistilBERT fine-tuning (3 seeds), comparison with TF‑IDF, McNemar test | GPU (T4) | ready |
 | 03 | Style attack: rewrites, NLI filter, accuracy drops, dose–response | GPU (NLI filter) | planned |
 | 04 | Defenses: style normalisation vs. rewrite augmentation | GPU | planned |
 | 05 | Final analysis, figures, demo | CPU | planned |
@@ -20,6 +20,7 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 1. Open the notebook in Colab. Either upload it, or open it from Google Drive with **Open with → Google Colaboratory**.
 2. For GPU notebooks: **Runtime → Change runtime type → T4 GPU**.
 3. **Runtime → Run all** and approve the Google Drive prompt.
+4. On a phone, tap ▶ on the keep-alive player in the first cell. It loops a near-silent sound so the browser doesn't suspend the tab during long runs.
 
 Every notebook reads and writes `MyDrive/NLP_style_attack/`:
 
