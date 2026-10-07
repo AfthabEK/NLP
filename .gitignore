@@ -11,3 +11,6 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .venv/
+
+# Local Claude Code settings
+.claude/settings.local.json
