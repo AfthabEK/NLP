@@ -1,6 +1,8 @@
 """Check a rewrite file against its input chunk.
 
-    python scripts/validate_rewrites.py INPUT_CHUNK.jsonl REWRITES.jsonl
+    python scripts/validate_rewrites.py INPUT_CHUNK.jsonl REWRITES.jsonl [CONDITIONS]
+
+CONDITIONS is an optional comma-separated list (default: same,flip1,flip2,flip3).
 
 Errors (exit code 1): malformed lines, unknown ids/conditions, missing or duplicate (id, condition) pairs,
 empty fields, URLs or agency tags, body length far from the original.
@@ -29,7 +31,8 @@ def numbers(s):
     return {re.sub(r"[,\s]", "", n).rstrip(".") for n in NUMBER.findall(re.sub(r"(\d), (\d{3})", r"\1,\2", s))}
 
 
-def main(input_path, output_path):
+def main(input_path, output_path, conditions=",".join(CONDITIONS)):
+    conditions = tuple(conditions.split(","))
     articles = {}
     with open(input_path) as f:
         for line in f:
@@ -53,7 +56,7 @@ def main(input_path, output_path):
             if r["id"] not in articles:
                 errors.append(f"line {n}: id {r['id']} is not in the input chunk")
                 continue
-            if r["condition"] not in CONDITIONS:
+            if r["condition"] not in conditions:
                 errors.append(f"line {n}: unknown condition {r['condition']!r}")
                 continue
             if key in seen:
@@ -78,7 +81,7 @@ def main(input_path, output_path):
                 if norm(q) not in out_norm:
                     warnings.append(f"{key}: quote not found verbatim: \"{q[:60]}...\"")
     for aid in articles:
-        for c in CONDITIONS:
+        for c in conditions:
             if (aid, c) not in seen:
                 errors.append(f"missing ({aid}, {c})")
     print(f"{len(seen)} rewrites checked for {len(articles)} articles: {len(errors)} errors, {len(warnings)} warnings")
@@ -90,4 +93,4 @@ def main(input_path, output_path):
 
 
 if __name__ == "__main__":
-    sys.exit(main(*sys.argv[1:3]))
+    sys.exit(main(*sys.argv[1:4]))
