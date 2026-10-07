@@ -1,0 +1,13 @@
+# Data and generated outputs live on Google Drive, not in git
+NLP_style_attack/
+data/
+*.parquet
+*.joblib
+*.pt
+*.safetensors
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
