@@ -12,7 +12,7 @@ sensational tone, with the facts unchanged. See [`docs/project_plan.md`](docs/pr
 | 01 | [`01_data_and_baseline.ipynb`](notebooks/01_data_and_baseline.ipynb): WELFake loading, cleaning, EDA, style cues, splits, TF‑IDF + LR baseline | CPU | done |
 | 02 | [`02_distilbert.ipynb`](notebooks/02_distilbert.ipynb): DistilBERT fine-tuning (3 seeds), comparison with TF‑IDF, McNemar test | GPU (T4) | done |
 | 03a | [`03a_attack_sample.ipynb`](notebooks/03a_attack_sample.ipynb): sample 600 test articles, truncate, strip source markers, export for rewriting | CPU | done |
-| 03b | [`03b_style_attack.ipynb`](notebooks/03b_style_attack.ipynb): NLI content check, accuracy by condition, effect decomposition, flip rates, dose–response | GPU (T4) | ready (needs `rewrites/`) |
+| 03b | [`03b_style_attack.ipynb`](notebooks/03b_style_attack.ipynb): NLI content check, accuracy by condition, effect decomposition, flip rates, dose–response | GPU (T4) | ready |
 | 04 | Defenses: style normalisation vs. rewrite augmentation | GPU | planned |
 | 05 | Final analysis, figures, demo | CPU | planned |
 
